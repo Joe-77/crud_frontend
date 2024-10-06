@@ -39,7 +39,7 @@ export default function Home() {
     setLoading(true);
     axios
       .put(
-        `https://crud-no63.vercel.app/update-customer/${customerData[current]._id}`,
+        `https://crud-no63.vercel.app/api/update-customer/${customerData[current]._id}`,
         data
       )
       .then(() => {
@@ -55,7 +55,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get("https://crud-no63.vercel.app/get-customers")
+      .get("https://crud-no63.vercel.app/api/get-customers")
       .then((res) => {
         setCustomerData(res.data);
         setCurrent(0);

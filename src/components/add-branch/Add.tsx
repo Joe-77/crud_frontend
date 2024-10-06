@@ -28,9 +28,8 @@ export default function Add() {
       note: data.note,
       address: data.address,
     };
-
     axios
-      .post("https://crud-no63.vercel.app/create-customer", customerData)
+      .post("https://crud-no63.vercel.app/api/create-customer", customerData)
       .then(() => {
         toast.success("customer created successfully");
         setLoading(false);
