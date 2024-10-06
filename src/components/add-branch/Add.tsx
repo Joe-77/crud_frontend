@@ -167,7 +167,7 @@ export default function Add() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 absolute top-5 right-5">
+          <div className="flex items-center gap-3 absolute top-5 right-1 xs:right-5">
             <Link
               to="/add-branch"
               className="text-xl bg-white lg:w-6 lg:h-6 flex items-center justify-center rounded-full text-black"

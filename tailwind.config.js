@@ -5,6 +5,7 @@ export default {
     extend: {
       screens: {
         xmd: "860px",
+        xs: "400px",
       },
     },
   },
