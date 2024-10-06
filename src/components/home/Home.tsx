@@ -222,14 +222,14 @@ export default function Home() {
               <button
                 disabled={loading ? true : false}
                 onClick={handleDecrementCustomer}
-                className="absolute left-2 sm:left-8 bg-gray-500 shadow-md w-8 h-8 rounded-full flex justify-center items-center text-white disabled:cursor-not-allowed"
+                className="fixed left-2 sm:left-8 bg-gray-500 shadow-md w-5 h-5 md:w-8 md:h-8  rounded-full flex justify-center items-center text-white disabled:cursor-not-allowed"
               >
                 <FaArrowLeft />
               </button>
               <button
                 disabled={loading ? true : false}
                 onClick={handleIncrementCustomer}
-                className="absolute right-2 sm:right-8 bg-gray-500 shadow-md w-8 h-8 rounded-full flex justify-center items-center text-white disabled:cursor-not-allowed"
+                className="fixed right-2 sm:right-8 bg-gray-500 shadow-md w-5 h-5 md:w-8 md:h-8 rounded-full flex justify-center items-center text-white disabled:cursor-not-allowed"
               >
                 <FaArrowRight />
               </button>
