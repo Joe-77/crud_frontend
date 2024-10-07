@@ -1,9 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { IoMdSave } from "react-icons/io";
 import { IoAddOutline } from "react-icons/io5";
+import {
+  MdKeyboardArrowLeft,
+  MdKeyboardArrowRight,
+  MdKeyboardDoubleArrowLeft,
+  MdOutlineDoubleArrow,
+} from "react-icons/md";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
@@ -22,16 +27,12 @@ export default function Home() {
   const handleIncrementCustomer = () => {
     if (current < customerData.length - 1) {
       setCurrent(current + 1);
-    } else {
-      setCurrent(0);
     }
   };
 
   const handleDecrementCustomer = () => {
     if (current > 0) {
       setCurrent(current - 1);
-    } else {
-      setCurrent(customerData.length - 1);
     }
   };
 
@@ -64,7 +65,7 @@ export default function Home() {
         setCustomerData([]);
         console.log(error);
       });
-  }, []);
+  }, [loading]);
 
   useEffect(() => {
     reset(customerData[current]);
@@ -218,20 +219,44 @@ export default function Home() {
           </form>
 
           {customerData?.length > 1 && (
-            <div className="absolute top-1/4 -translate-y-1/2 w-full left-0">
+            <div className=" sm:w-1/2 mx-auto w-3/4 mt-10 flex justify-between pb-5">
               <button
+                onClick={() => setCurrent(0)}
                 disabled={loading ? true : false}
-                onClick={handleDecrementCustomer}
-                className="fixed left-2 sm:left-8 bg-gray-500 shadow-md w-5 h-5 md:w-8 md:h-8  rounded-full flex justify-center items-center text-white disabled:cursor-not-allowed"
+                className="bg-gray-500 shadow-md w-5 h-5 md:w-8 md:h-8  rounded-full flex justify-center items-center text-white disabled:cursor-not-allowed"
               >
-                <FaArrowLeft />
+                <MdKeyboardDoubleArrowLeft />
               </button>
+              <div className="flex items-center gap-7 text-blue-700">
+                <button
+                  onClick={handleDecrementCustomer}
+                  disabled={loading ? true : false}
+                  className={`text-2xl ${
+                    current === 0 && "text-gray-500 cursor-not-allowed"
+                  } disabled:cursor-not-allowed`}
+                >
+                  <MdKeyboardArrowLeft />
+                </button>
+                <span>
+                  {current + 1} / {customerData.length}
+                </span>
+                <button
+                  onClick={handleIncrementCustomer}
+                  disabled={loading ? true : false}
+                  className={`text-2xl ${
+                    current === customerData.length - 1 &&
+                    "text-gray-500 cursor-not-allowed"
+                  } disabled:cursor-not-allowed`}
+                >
+                  <MdKeyboardArrowRight />
+                </button>
+              </div>
               <button
+                onClick={() => setCurrent(customerData.length - 1)}
                 disabled={loading ? true : false}
-                onClick={handleIncrementCustomer}
-                className="fixed right-2 sm:right-8 bg-gray-500 shadow-md w-5 h-5 md:w-8 md:h-8 rounded-full flex justify-center items-center text-white disabled:cursor-not-allowed"
+                className="bg-gray-500 shadow-md w-5 h-5 md:w-8 md:h-8 rounded-full flex justify-center items-center text-white disabled:cursor-not-allowed"
               >
-                <FaArrowRight />
+                <MdOutlineDoubleArrow />
               </button>
             </div>
           )}
